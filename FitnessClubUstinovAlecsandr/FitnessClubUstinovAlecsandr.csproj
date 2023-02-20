@@ -110,8 +110,14 @@
     <Compile Include="DB\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AddService.xaml.cs">
+      <DependentUpon>AddService.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\RegistrationWindows.xaml.cs">
       <DependentUpon>RegistrationWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ServiceList.xaml.cs">
+      <DependentUpon>ServiceList.xaml</DependentUpon>
     </Compile>
     <Page Include="Pages\AdminsPages\AddClient.xaml">
       <SubType>Designer</SubType>
@@ -146,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DirectorPages\Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddService.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,6 +223,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\ServiceList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -260,6 +274,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resors\maxresdefault.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
