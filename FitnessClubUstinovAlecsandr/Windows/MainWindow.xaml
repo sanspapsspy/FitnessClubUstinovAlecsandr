@@ -1,0 +1,15 @@
+﻿<Window x:Class="FitnessClubUstinovAlecsandr.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitnessClubUstinovAlecsandr"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="400">
+    <Grid Background="#FF7F00">
+        
+        <TextBlock HorizontalAlignment="Center" Margin="0,61,0,0" TextWrapping="Wrap" Text="Welcome to the fitness club" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="Добро пожаловать в фитнес клуб" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20"/>
+        <Button Content="Окно Авторизации" HorizontalAlignment="Center" Margin="0,403,0,0" VerticalAlignment="Top" Height="46" Width="96" Background="#FF9F40" Click="ButtonAuthorization"/>
+    </Grid>
+</Window>
