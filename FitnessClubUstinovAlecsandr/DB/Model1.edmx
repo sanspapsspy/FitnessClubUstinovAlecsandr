@@ -4,60 +4,84 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Ustinov3usp919FitnessСlubModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище Ustivon3usp919FitnessClubModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Client">
           <Key>
-            <PropertyRef Name="IDClient" />
+            <PropertyRef Name="IdClient" />
           </Key>
-          <Property Name="IDClient" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
-          <Property Name="patronymic" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="DateOfBirth" Type="date" Nullable="false" />
-          <Property Name="Phone" Type="nchar" MaxLength="10" />
-          <Property Name="Address" Type="nvarchar" MaxLength="100" />
-          <Property Name="PassportSeries" Type="nvarchar" MaxLength="100" />
-          <Property Name="PassportNumber" Type="nchar" MaxLength="10" />
-          <Property Name="Genger" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="IDEmployee" />
-          </Key>
-          <Property Name="IDEmployee" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="100" />
-          <Property Name="Patronymic" Type="nvarchar" MaxLength="100" />
-        </EntityType>
-        <EntityType Name="Gender">
-          <Key>
-            <PropertyRef Name="IDGender" />
-          </Key>
-          <Property Name="IDGender" Type="int" Nullable="false" />
-          <Property Name="NameGender" Type="nchar" MaxLength="10" />
-        </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="IDOrder" />
-          </Key>
-          <Property Name="IDOrder" Type="int" Nullable="false" />
-          <Property Name="IDClient" Type="int" Nullable="false" />
-          <Property Name="IDEmployee" Type="int" Nullable="false" />
-          <Property Name="DateOrder" Type="date" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="IdTag" Type="int" />
+          <Property Name="GenderCode" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6013: Первичный ключ в таблице или представлении "Ustinov3usp919FitnessСlub.dbo.OrderService" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
-        <EntityType Name="OrderService">
-          <Property Name="IDService" Type="int" />
-          <Property Name="IDOrder" Type="int" />
-          <Property Name="Quantity" Type="nvarchar" MaxLength="100" />
-        </EntityType>-->
+предупреждение 6002: В таблице или представлении "Ustivon3usp919FitnessClub.dbo.ClientService" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ClientService">
+          <Key>
+            <PropertyRef Name="IdClient" />
+            <PropertyRef Name="IdService" />
+          </Key>
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdService" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employe">
+          <Key>
+            <PropertyRef Name="IdEmploye" />
+          </Key>
+          <Property Name="IdEmploye" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdRole" Type="int" />
+          <Property Name="GengerCode" Type="nchar" MaxLength="1" />
+          <Property Name="PhotoPath" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+        </EntityType>
+        <EntityType Name="GenderCode">
+          <Key>
+            <PropertyRef Name="GenderCode" />
+          </Key>
+          <Property Name="GenderCode" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Ustivon3usp919FitnessClub.dbo.Schedule" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="IdClient" />
+            <PropertyRef Name="IdEmploye" />
+          </Key>
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdEmploye" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Service">
           <Key>
-            <PropertyRef Name="IDService" />
+            <PropertyRef Name="IdService" />
           </Key>
-          <Property Name="IDService" Type="int" Nullable="false" />
-          <Property Name="NameService" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="PriceService" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="DateService" Type="date" />
+          <Property Name="IdService" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DurationOnMin" Type="int" />
+          <Property Name="Desoption" Type="nchar" MaxLength="1000" />
+          <Property Name="PhotoPath" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -69,79 +93,133 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="Trainer">
+        <EntityType Name="TagOfClient">
           <Key>
-            <PropertyRef Name="IDTrainer" />
+            <PropertyRef Name="IdTag" />
           </Key>
-          <Property Name="IDTrainer" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="100" />
-          <Property Name="Patronymic" Type="nchar" MaxLength="100" />
-          <Property Name="WorkingHours" Type="nchar" MaxLength="100" />
-          <Property Name="WorkExperience" Type="nchar" MaxLength="100" />
+          <Property Name="IdTag" Type="int" Nullable="false" />
+          <Property Name="TagName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6013: Первичный ключ в таблице или представлении "Ustinov3usp919FitnessСlub.dbo.TrainerService" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
-        <EntityType Name="TrainerService">
-          <Property Name="IDTrainer" Type="int" />
-          <Property Name="IDService" Type="int" />
-        </EntityType>-->
-        <EntityType Name="User">
+предупреждение 6002: В таблице или представлении "Ustivon3usp919FitnessClub.dbo.UserAuth" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="UserAuth">
           <Key>
             <PropertyRef Name="IdUser" />
+            <PropertyRef Name="Login" />
+            <PropertyRef Name="Password" />
           </Key>
           <Property Name="IdUser" Type="int" Nullable="false" />
-          <Property Name="Login" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Client_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+        <Association Name="FK_Client_GenderCode">
+          <End Role="GenderCode" Type="Self.GenderCode" Multiplicity="1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="IDGender" />
+            <Principal Role="GenderCode">
+              <PropertyRef Name="GenderCode" />
             </Principal>
             <Dependent Role="Client">
-              <PropertyRef Name="Genger" />
+              <PropertyRef Name="GenderCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Client">
+        <Association Name="FK_Client_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_TagOfClient">
+          <End Role="TagOfClient" Type="Self.TagOfClient" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagOfClient">
+              <PropertyRef Name="IdTag" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdTag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientService_Client">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="ClientService" Type="Self.ClientService" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Client">
-              <PropertyRef Name="IDClient" />
+              <PropertyRef Name="IdClient" />
             </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="IDOrder" />
+            <Dependent Role="ClientService">
+              <PropertyRef Name="IdClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK_ClientService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="ClientService" Type="Self.ClientService" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="IDEmployee" />
+            <Principal Role="Service">
+              <PropertyRef Name="IdService" />
             </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="IDEmployee" />
+            <Dependent Role="ClientService">
+              <PropertyRef Name="IdService" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Ошибки, обнаруженные при создании:
-ошибка 6004: Невозможно найти таблицу "Ustinov3usp919FitnessСlub.dbo.OrderService", на которую ссылается связь.
-        <Association Name="FK_OrderService_Order" />-->
-        <!--Ошибки, обнаруженные при создании:
-ошибка 6004: Невозможно найти таблицу "Ustinov3usp919FitnessСlub.dbo.OrderService", на которую ссылается связь.
-        <Association Name="FK_OrderService_Service" />-->
-        <!--Ошибки, обнаруженные при создании:
-ошибка 6004: Невозможно найти таблицу "Ustinov3usp919FitnessСlub.dbo.TrainerService", на которую ссылается связь.
-        <Association Name="FK_TrainerService_Service" />-->
-        <!--Ошибки, обнаруженные при создании:
-ошибка 6004: Невозможно найти таблицу "Ustinov3usp919FitnessСlub.dbo.TrainerService", на которую ссылается связь.
-        <Association Name="FK_TrainerService_Trainer" />-->
+        <Association Name="FK_Employe_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Employe">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Employe">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="IdEmploye" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="IdEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAuth_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="UserAuth" Type="Self.UserAuth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="UserAuth">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -173,85 +251,144 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="Хранилище Ustinov3usp919FitnessСlubModelContainer">
+        <EntityContainer Name="Хранилище Ustivon3usp919FitnessClubModelContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GenderCode" EntityType="Self.GenderCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
-            <End Role="Gender" EntitySet="Gender" />
+          <EntitySet Name="TagOfClient" EntityType="Self.TagOfClient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientService" EntityType="Self.ClientService" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ClientService].[IdClient] AS [IdClient], 
+    [ClientService].[IdService] AS [IdService]
+    FROM [dbo].[ClientService] AS [ClientService]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Schedule].[IdClient] AS [IdClient], 
+    [Schedule].[IdEmploye] AS [IdEmploye]
+    FROM [dbo].[Schedule] AS [Schedule]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserAuth" EntityType="Self.UserAuth" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserAuth].[IdUser] AS [IdUser], 
+    [UserAuth].[Login] AS [Login], 
+    [UserAuth].[Password] AS [Password]
+    FROM [dbo].[UserAuth] AS [UserAuth]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Client_GenderCode" Association="Self.FK_Client_GenderCode">
+            <End Role="GenderCode" EntitySet="GenderCode" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+          <AssociationSet Name="FK_Client_Role" Association="Self.FK_Client_Role">
+            <End Role="Role" EntitySet="Role" />
             <End Role="Client" EntitySet="Client" />
-            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Order" EntitySet="Order" />
+          <AssociationSet Name="FK_Client_TagOfClient" Association="Self.FK_Client_TagOfClient">
+            <End Role="TagOfClient" EntitySet="TagOfClient" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientService_Client" Association="Self.FK_ClientService_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientService" EntitySet="ClientService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientService_Service" Association="Self.FK_ClientService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ClientService" EntitySet="ClientService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employe_Client" Association="Self.FK_Employe_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Employe" EntitySet="Employe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Client" Association="Self.FK_Schedule_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Employe" Association="Self.FK_Schedule_Employe">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAuth_Client" Association="Self.FK_UserAuth_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="UserAuth" EntitySet="UserAuth" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Ustinov3usp919FitnessСlubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Ustivon3usp919FitnessClubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Client">
           <Key>
-            <PropertyRef Name="IDClient" />
+            <PropertyRef Name="IdClient" />
           </Key>
-          <Property Name="IDClient" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PassportSeries" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PassportNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Genger" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_Client_Gender" FromRole="Client" ToRole="Gender" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Client" FromRole="Client" ToRole="Order" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="IdTag" Type="Int32" />
+          <Property Name="GenderCode" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" />
+          <NavigationProperty Name="GenderCode1" Relationship="Self.FK_Client_GenderCode" FromRole="Client" ToRole="GenderCode" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Client_Role" FromRole="Client" ToRole="Role" />
+          <NavigationProperty Name="TagOfClient" Relationship="Self.FK_Client_TagOfClient" FromRole="Client" ToRole="TagOfClient" />
+          <NavigationProperty Name="Employe" Relationship="Self.FK_Employe_Client" FromRole="Client" ToRole="Employe" />
+          <NavigationProperty Name="UserAuth" Relationship="Self.FK_UserAuth_Client" FromRole="Client" ToRole="UserAuth" />
+          <NavigationProperty Name="Service" Relationship="Self.ClientService" FromRole="Client" ToRole="Service" />
+          <NavigationProperty Name="Employe1" Relationship="Self.Schedule" FromRole="Client" ToRole="Employe" />
         </EntityType>
-        <EntityType Name="Employee">
+        <EntityType Name="Employe">
           <Key>
-            <PropertyRef Name="IDEmployee" />
+            <PropertyRef Name="IdEmploye" />
           </Key>
-          <Property Name="IDEmployee" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
+          <Property Name="IdEmploye" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" />
+          <Property Name="GengerCode" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Employe_Client" FromRole="Employe" ToRole="Client" />
+          <NavigationProperty Name="Client1" Relationship="Self.Schedule" FromRole="Employe" ToRole="Client" />
         </EntityType>
-        <EntityType Name="Gender">
+        <EntityType Name="GenderCode">
           <Key>
-            <PropertyRef Name="IDGender" />
+            <PropertyRef Name="GenderCode1" />
           </Key>
-          <Property Name="IDGender" Type="Int32" Nullable="false" />
-          <Property Name="NameGender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Gender" FromRole="Gender" ToRole="Client" />
+          <Property Name="GenderCode1" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Client_GenderCode" FromRole="GenderCode" ToRole="Client" />
         </EntityType>
-        <EntityType Name="Order">
+        <EntityType Name="Role">
           <Key>
-            <PropertyRef Name="IDOrder" />
+            <PropertyRef Name="IdRole" />
           </Key>
-          <Property Name="IDOrder" Type="Int32" Nullable="false" />
-          <Property Name="IDClient" Type="Int32" Nullable="false" />
-          <Property Name="IDEmployee" Type="Int32" Nullable="false" />
-          <Property Name="DateOrder" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_Order_Client" FromRole="Order" ToRole="Client" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Role" FromRole="Role" ToRole="Client" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
-            <PropertyRef Name="IDService" />
+            <PropertyRef Name="IdService" />
           </Key>
-          <Property Name="IDService" Type="Int32" Nullable="false" />
-          <Property Name="NameService" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PriceService" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateService" Type="DateTime" Precision="0" />
+          <Property Name="IdService" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DurationOnMin" Type="Int32" />
+          <Property Name="Desoption" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="PhotoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="Self.ClientService" FromRole="Service" ToRole="Client" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -263,81 +400,129 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Trainer">
+        <EntityType Name="TagOfClient">
           <Key>
-            <PropertyRef Name="IDTrainer" />
+            <PropertyRef Name="IdTag" />
           </Key>
-          <Property Name="IDTrainer" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="WorkingHours" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="WorkExperience" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="IdTag" Type="Int32" Nullable="false" />
+          <Property Name="TagName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Client_TagOfClient" FromRole="TagOfClient" ToRole="Client" />
         </EntityType>
-        <EntityType Name="User">
+        <EntityType Name="UserAuth">
           <Key>
             <PropertyRef Name="IdUser" />
+            <PropertyRef Name="Login" />
+            <PropertyRef Name="Password" />
           </Key>
           <Property Name="IdUser" Type="Int32" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_UserAuth_Client" FromRole="UserAuth" ToRole="Client" />
         </EntityType>
-        <Association Name="FK_Client_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+        <Association Name="FK_Client_GenderCode">
+          <End Role="GenderCode" Type="Self.GenderCode" Multiplicity="1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="IDGender" />
+            <Principal Role="GenderCode">
+              <PropertyRef Name="GenderCode1" />
             </Principal>
             <Dependent Role="Client">
-              <PropertyRef Name="Genger" />
+              <PropertyRef Name="GenderCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Client">
-          <End Role="Client" Type="Self.Client" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+        <Association Name="FK_Client_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_TagOfClient">
+          <End Role="TagOfClient" Type="Self.TagOfClient" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagOfClient">
+              <PropertyRef Name="IdTag" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdTag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employe_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Client">
-              <PropertyRef Name="IDClient" />
+              <PropertyRef Name="IdClient" />
             </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="IDOrder" />
+            <Dependent Role="Employe">
+              <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK_UserAuth_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="UserAuth" Type="Self.UserAuth" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="IDEmployee" />
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
             </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="IDEmployee" />
+            <Dependent Role="UserAuth">
+              <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <Association Name="ClientService">
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+        </Association>
+        <Association Name="Schedule">
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Ustivon3usp919FitnessClubEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Client" EntityType="Self.Client" />
-          <EntitySet Name="Employee" EntityType="Self.Employee" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="Employe" EntityType="Self.Employe" />
+          <EntitySet Name="GenderCode" EntityType="Self.GenderCode" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="Service" EntityType="Self.Service" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Trainer" EntityType="Self.Trainer" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
-            <End Role="Gender" EntitySet="Gender" />
+          <EntitySet Name="TagOfClient" EntityType="Self.TagOfClient" />
+          <EntitySet Name="UserAuth" EntityType="Self.UserAuth" />
+          <AssociationSet Name="FK_Client_GenderCode" Association="Self.FK_Client_GenderCode">
+            <End Role="GenderCode" EntitySet="GenderCode" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+          <AssociationSet Name="FK_Client_Role" Association="Self.FK_Client_Role">
+            <End Role="Role" EntitySet="Role" />
             <End Role="Client" EntitySet="Client" />
-            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Order" EntitySet="Order" />
+          <AssociationSet Name="FK_Client_TagOfClient" Association="Self.FK_Client_TagOfClient">
+            <End Role="TagOfClient" EntitySet="TagOfClient" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employe_Client" Association="Self.FK_Employe_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Employe" EntitySet="Employe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAuth_Client" Association="Self.FK_UserAuth_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="UserAuth" EntitySet="UserAuth" />
+          </AssociationSet>
+          <AssociationSet Name="ClientService" Association="Self.ClientService">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="Schedule" Association="Self.Schedule">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Employe" EntitySet="Employe" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -355,11 +540,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Ustinov3usp919FitnessСlubModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Ustivon3usp919FitnessClubModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Ustinov3usp919FitnessСlubModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Ustivon3usp919FitnessClubModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -386,61 +571,72 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Ustinov3usp919FitnessСlubModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Ustivon3usp919FitnessClubModelContainer" CdmEntityContainer="Ustivon3usp919FitnessClubEntities">
           <EntitySetMapping Name="Client">
-            <EntityTypeMapping TypeName="Ustinov3usp919FitnessСlubModel.Client">
+            <EntityTypeMapping TypeName="Ustivon3usp919FitnessClubModel.Client">
               <MappingFragment StoreEntitySet="Client">
-                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="PassportSeries" ColumnName="PassportSeries" />
-                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
-                <ScalarProperty Name="Genger" ColumnName="Genger" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="Ustinov3usp919FitnessСlubModel.Employee">
-              <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="IDEmployee" ColumnName="IDEmployee" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="IdTag" ColumnName="IdTag" />
+                <ScalarProperty Name="GenderCode" ColumnName="GenderCode" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Gender">
-            <EntityTypeMapping TypeName="Ustinov3usp919FitnessСlubModel.Gender">
-              <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="IDGender" ColumnName="IDGender" />
-                <ScalarProperty Name="NameGender" ColumnName="NameGender" />
+          <EntitySetMapping Name="Employe">
+            <EntityTypeMapping TypeName="Ustivon3usp919FitnessClubModel.Employe">
+              <MappingFragment StoreEntitySet="Employe">
+                <ScalarProperty Name="IdEmploye" ColumnName="IdEmploye" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="GengerCode" ColumnName="GengerCode" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="Ustinov3usp919FitnessСlubModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="IDOrder" ColumnName="IDOrder" />
-                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
-                <ScalarProperty Name="IDEmployee" ColumnName="IDEmployee" />
-                <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
+          <EntitySetMapping Name="GenderCode">
+            <EntityTypeMapping TypeName="Ustivon3usp919FitnessClubModel.GenderCode">
+              <MappingFragment StoreEntitySet="GenderCode">
+                <ScalarProperty Name="GenderCode1" ColumnName="GenderCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="Ustivon3usp919FitnessClubModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Service">
-            <EntityTypeMapping TypeName="Ustinov3usp919FitnessСlubModel.Service">
+            <EntityTypeMapping TypeName="Ustivon3usp919FitnessClubModel.Service">
               <MappingFragment StoreEntitySet="Service">
-                <ScalarProperty Name="IDService" ColumnName="IDService" />
-                <ScalarProperty Name="NameService" ColumnName="NameService" />
-                <ScalarProperty Name="PriceService" ColumnName="PriceService" />
-                <ScalarProperty Name="DateService" ColumnName="DateService" />
+                <ScalarProperty Name="IdService" ColumnName="IdService" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DurationOnMin" ColumnName="DurationOnMin" />
+                <ScalarProperty Name="Desoption" ColumnName="Desoption" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Ustinov3usp919FitnessСlubModel.sysdiagrams">
+            <EntityTypeMapping TypeName="Ustivon3usp919FitnessClubModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -450,41 +646,53 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Trainer">
-            <EntityTypeMapping TypeName="Ustinov3usp919FitnessСlubModel.Trainer">
-              <MappingFragment StoreEntitySet="Trainer">
-                <ScalarProperty Name="IDTrainer" ColumnName="IDTrainer" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="WorkingHours" ColumnName="WorkingHours" />
-                <ScalarProperty Name="WorkExperience" ColumnName="WorkExperience" />
+          <EntitySetMapping Name="TagOfClient">
+            <EntityTypeMapping TypeName="Ustivon3usp919FitnessClubModel.TagOfClient">
+              <MappingFragment StoreEntitySet="TagOfClient">
+                <ScalarProperty Name="IdTag" ColumnName="IdTag" />
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="Ustinov3usp919FitnessСlubModel.User">
-              <MappingFragment StoreEntitySet="User">
+          <EntitySetMapping Name="UserAuth">
+            <EntityTypeMapping TypeName="Ustivon3usp919FitnessClubModel.UserAuth">
+              <MappingFragment StoreEntitySet="UserAuth">
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Ustinov3usp919FitnessСlubModel.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Ustinov3usp919FitnessСlubModel.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Ustinov3usp919FitnessСlubModel.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Ustinov3usp919FitnessСlubModel.sp_helpdiagramdefinition">
+          <AssociationSetMapping Name="ClientService" TypeName="Ustivon3usp919FitnessClubModel.ClientService" StoreEntitySet="ClientService">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+            </EndProperty>
+            <EndProperty Name="Service">
+              <ScalarProperty Name="IdService" ColumnName="IdService" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Schedule" TypeName="Ustivon3usp919FitnessClubModel.Schedule" StoreEntitySet="Schedule">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+            </EndProperty>
+            <EndProperty Name="Employe">
+              <ScalarProperty Name="IdEmploye" ColumnName="IdEmploye" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Ustivon3usp919FitnessClubModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Ustivon3usp919FitnessClubModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Ustivon3usp919FitnessClubModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Ustivon3usp919FitnessClubModel.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Ustinov3usp919FitnessСlubModel.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="Ustivon3usp919FitnessClubModel.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Ustinov3usp919FitnessСlubModel.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Ustivon3usp919FitnessClubModel.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Ustinov3usp919FitnessСlubModel.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="Ustivon3usp919FitnessClubModel.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -493,8 +701,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Ustinov3usp919FitnessСlubModel.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Ustinov3usp919FitnessСlubModel.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Ustivon3usp919FitnessClubModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Ustivon3usp919FitnessClubModel.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

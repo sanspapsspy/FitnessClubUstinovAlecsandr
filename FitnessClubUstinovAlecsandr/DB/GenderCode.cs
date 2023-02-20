@@ -12,11 +12,18 @@ namespace FitnessClubUstinovAlecsandr.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class GenderCode
     {
-        public int IdUser { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Mail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public GenderCode()
+        {
+            this.Client = new HashSet<Client>();
+        }
+    
+        public string GenderCode1 { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Client> Client { get; set; }
     }
 }

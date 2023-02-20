@@ -5,75 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessClubUstinovAlecsandr.Windows"
         mc:Ignorable="d"
-        Title="AddService" Height="450" Width="800">
+        Title="AddService" Height="600" Width="300" Background="AntiqueWhite">
     <Grid>
-        <Grid.RowDefinitions>
-        <RowDefinition Height="50"/>
-        <RowDefinition Height="50"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="50"/>
-    </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" Margin="0,66,0,0" TextWrapping="Wrap" Text="Добавление услуги" VerticalAlignment="Top"/>
+        <Image Source="/Resors/maxresdefault.jpg" Margin="0,-121,0,121" />
+        <TextBlock HorizontalAlignment="Center" Margin="0,260,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.479,0.534"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,300,0,0" TextWrapping="Wrap" Text="Введите наименование услуги" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,320,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,340,0,0" TextWrapping="Wrap" Text="Введите стоимость услуги" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,380,0,0" TextWrapping="Wrap" Text="Введите продолжительность услуги услуги" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,400,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,420,0,0" TextWrapping="Wrap" Text="Введите описание услуги" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,440,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Добавить услугу" HorizontalAlignment="Center" Margin="0,554,0,0" VerticalAlignment="Top"/>
 
-
-    <TextBlock Text="Список услуг"
-                   FontSize="30"
-                   FontWeight="Bold"
-                   HorizontalAlignment="Center"/>
-
-    <ListView x:Name="lvService"
-                  Grid.Row="2"
-                  Margin="5" 
-                  d:ItemsSource="{d:SampleData ItemCount=5}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-        <ListView.ItemsPanel>
-            <ItemsPanelTemplate>
-                <WrapPanel/>
-            </ItemsPanelTemplate>
-        </ListView.ItemsPanel>
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <Border BorderBrush="DarkSlateGray"
-                            BorderThickness="1"
-                            Width="200"
-                            Height="250"
-                            Margin="8">
-                    <StackPanel>
-                        <Image x:Name="ServiceImage"
-                                   Height="150"
-                                   Width="190">
-                            <Image.Source>
-                                <Binding Path="Photo">
-                                    <Binding.TargetNullValue>
-                                        <ImageSource>/Resors/maxresdefault.jpg</ImageSource>
-                                    </Binding.TargetNullValue>
-                                </Binding>
-                            </Image.Source>
-
-                        </Image>
-
-                        <TextBlock Text="{Binding NameService}"
-                                       FontSize="18"
-                                       Margin="5 0 0 0"/>
-                        <TextBlock Text="{Binding PriceService}"
-                                       FontSize="18"
-                                       Margin="5 0 0 0"/>
-                        <TextBlock Text="{Binding Description}"
-                                       FontSize="18"
-                                       Margin="5 0 0 0"/>
-                    </StackPanel>
-                </Border>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-
-    <Button x:Name="BtnAddService"
-                Content="Добавить услугу"
-                Grid.Row="3"
-                Width="250"
-                Height="40"
-                FontSize="22"
-                HorizontalAlignment="Right"
-                Margin="20 0"
-                Click="BtnAddService_Click"/>
     </Grid>
 </Window>

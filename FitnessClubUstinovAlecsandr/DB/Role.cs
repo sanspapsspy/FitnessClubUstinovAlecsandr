@@ -12,14 +12,18 @@ namespace FitnessClubUstinovAlecsandr.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class Role
     {
-        public int IDOrder { get; set; }
-        public int IDClient { get; set; }
-        public int IDEmployee { get; set; }
-        public Nullable<System.DateTime> DateOrder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Role()
+        {
+            this.Client = new HashSet<Client>();
+        }
     
-        public virtual Client Client { get; set; }
-        public virtual Employee Employee { get; set; }
+        public int IdRole { get; set; }
+        public string NameRole { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Client> Client { get; set; }
     }
 }

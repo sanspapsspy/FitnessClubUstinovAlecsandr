@@ -15,10 +15,10 @@ namespace FitnessClubUstinovAlecsandr.DB
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities : DbContext
+    public partial class Ustivon3usp919FitnessClubEntities : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public Ustivon3usp919FitnessClubEntities()
+            : base("name=Ustivon3usp919FitnessClubEntities")
         {
         }
     
@@ -28,13 +28,13 @@ namespace FitnessClubUstinovAlecsandr.DB
         }
     
         public virtual DbSet<Client> Client { get; set; }
-        public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<Gender> Gender { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<Employe> Employe { get; set; }
+        public virtual DbSet<GenderCode> GenderCode { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Trainer> Trainer { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<TagOfClient> TagOfClient { get; set; }
+        public virtual DbSet<UserAuth> UserAuth { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

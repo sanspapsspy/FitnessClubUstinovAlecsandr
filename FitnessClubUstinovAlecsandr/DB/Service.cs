@@ -14,9 +14,20 @@ namespace FitnessClubUstinovAlecsandr.DB
     
     public partial class Service
     {
-        public int IDService { get; set; }
-        public string NameService { get; set; }
-        public string PriceService { get; set; }
-        public Nullable<System.DateTime> DateService { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Service()
+        {
+            this.Client = new HashSet<Client>();
+        }
+    
+        public int IdService { get; set; }
+        public string Name { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<int> DurationOnMin { get; set; }
+        public string Desoption { get; set; }
+        public string PhotoPath { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Client> Client { get; set; }
     }
 }

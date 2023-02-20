@@ -12,16 +12,16 @@ namespace FitnessClubUstinovAlecsandr.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Gender
+    public partial class TagOfClient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Gender()
+        public TagOfClient()
         {
             this.Client = new HashSet<Client>();
         }
     
-        public int IDGender { get; set; }
-        public string NameGender { get; set; }
+        public int IdTag { get; set; }
+        public string TagName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Client> Client { get; set; }
